@@ -18,8 +18,8 @@ function recursiveTab($id_tab)
 	$adminTab = Tab::getTab(intval($cookie->id_lang), $id_tab);
 	
 	$tabs[]= $adminTab;
-	if ($adminTab['id_parent'] > 0)
-		recursiveTab($adminTab['id_parent']);
+	/*if ($adminTab['id_parent'] > 0)
+		recursiveTab($adminTab['id_parent']);*/
 }
 
 function checkingTab($tab)

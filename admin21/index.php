@@ -109,7 +109,7 @@ if ($tab)
         $token_import2 = Tools::getAdminToken("AdminImportv2".intval(Tab::getIdFromClassName('AdminImportv2')).intval($cookie->id_employee));
 
 		foreach ($tabs AS $key => $item){
-			//echo ' >> <img src="'.((trim($item['module']) != '') ? _MODULE_DIR_.$item['module'].'/'.$item['class_name'].'.gif' : '../img/t/'.$item['class_name'].'.gif').'" style="margin-right:5px" />'.((sizeof($tabs) - 1 > $key) ? '<a href="?tab='.$item['class_name'].'&token='.Tools::getAdminToken($item['class_name'].intval($item['id_tab']).intval($cookie->id_employee)).'">' : '').$item['name'].((sizeof($tabs) - 1 > $key) ? '</a>' : '');
+			echo ' >> <img src="'.((trim($item['module']) != '') ? _MODULE_DIR_.$item['module'].'/'.$item['class_name'].'.gif' : '../img/t/'.$item['class_name'].'.gif').'" style="margin-right:5px" />'.((sizeof($tabs) - 1 > $key) ? '<a href="?tab='.$item['class_name'].'&token='.Tools::getAdminToken($item['class_name'].intval($item['id_tab']).intval($cookie->id_employee)).'">' : '').$item['name'].((sizeof($tabs) - 1 > $key) ? '</a>' : '');
             //echo ' >> <img src="'.((trim($item['module']) != '') ? _MODULE_DIR_.$item['module'].'/'.$item['class_name'].'.gif' : '../img/t/'.$item['class_name'].'.gif').'" style="margin-right:5px" />'.('<a href="?tab='.$item['class_name'].'&token='.Tools::getAdminToken($item['class_name'].intval($item['id_tab']).intval($cookie->id_employee)).'">').$item['name'].'</a>';
             /*if($item['class_name'] == "AdminModules"){
                 echo ' >> <img src="'.((trim($item['module']) != '') ? _MODULE_DIR_.$item['module'].'/'.$item['class_name'].'.gif' : '../img/t/'.$item['class_name'].'.gif').'" style="margin-right:5px" />'.$item['name'];
@@ -124,198 +124,7 @@ if ($tab)
 		}
 		echo '</div>';
         
-        echo '<ul class="sub_menu_shop">';
-				
-    		$id_parent_tab_current = intval(Tab::getCurrentParentId());
-    		// Display tabs belonging to opened tab
-    		$id_parent = isset($id_parent) ? $id_parent : $id_parent_tab_current;
-    		
-    		if(isset($_GET["tab"]) && $_GET["tab"]=="AdminShipping"){
-    			$id_parent = 5;
-                echo '<li id="AdminShipping">
-                    <a href="index.php?tab=AdminShipping&token='.Tools::getAdminToken("AdminShipping".intval(Tab::getIdFromClassName('AdminShipping')).intval($cookie->id_employee)).'"><img style="margin-right:5px" src="../img/t/AdminShipping.gif"></a>
-                    <a href="index.php?tab=AdminShipping&token='.Tools::getAdminToken("AdminShipping".intval(Tab::getIdFromClassName('AdminShipping')).intval($cookie->id_employee)).'">'.translate('Shipping').'</a>
-                </li>';
-    		}elseif((isset($_GET["tab"]) && $_GET["tab"]=="AdminRangePrice") || (isset($_GET["tab"]) && $_GET["tab"]=="AdminRangeWeight") || (isset($_GET["tab"]) && $_GET["tab"]=="AdminCarriers")){
-    		   echo '<li>
-                    <a href="index.php?tab=AdminShipping&token='.Tools::getAdminToken("AdminShipping".intval(Tab::getIdFromClassName('AdminShipping')).intval($cookie->id_employee)).'"><img style="margin-right:5px" src="../img/t/AdminShipping.gif"></a>
-                    <a href="index.php?tab=AdminShipping&token='.Tools::getAdminToken("AdminShipping".intval(Tab::getIdFromClassName('AdminShipping')).intval($cookie->id_employee)).'">'.translate('Shipping').'</a>
-                </li>';
-    		}
-    		
-    		if(isset($_GET["tab"]) && $_GET["tab"]=="AdminImportv2"){
-    			$id_parent = -1;
-                echo '
-                    <li id="AdminImportv2">
-                        <a href="index.php?tab=AdminImportv2&token='.Tools::getAdminToken("AdminImportv2".intval(Tab::getIdFromClassName('AdminImportv2')).intval($cookie->id_employee)).'">'.translate('Imports').'</a>
-                    </li>
-                    <li id="AdminImportv2">
-                        <a href="index.php?tab=AdminImportv2&token='.Tools::getAdminToken("AdminImportv2".intval(Tab::getIdFromClassName('AdminImportv2')).intval($cookie->id_employee)).'&check=fields">'.translate('Check fields').'</a>
-                    </li>
-                    ';
-    		}
-            /*modificando*/
-            if(isset($_GET["tab"]) && $_GET["tab"]=="AdminCatalog"){
-                
-                echo '<li id="AdminCatalog">
-                    <a href="index.php?tab=AdminCatalogs&token='.Tools::getAdminToken("AdminCatalog".intval(Tab::getIdFromClassName('AdminCatalog')).intval($cookie->id_employee)).'"><img style="margin-right:5px" src="../img/t/AdminCatalog.gif"></a>
-                    <a href="index.php?tab=AdminCatalog&token='.Tools::getAdminToken("AdminCatalog".intval(Tab::getIdFromClassName('AdminCatalog')).intval($cookie->id_employee)).'">'.translate('Catalog').'</a>
-                </li>';
-            }
-    		
-    		if(isset($_GET["tab"]) && $_GET["tab"]=="AdminManufacturers"){
-    			$id_parent = -1;
-                 echo '<li id="AdminManufacturers">
-                    <a href="index.php?tab=AdminManufacturers&token='.Tools::getAdminToken("AdminManufacturers".intval(Tab::getIdFromClassName('AdminManufacturers')).intval($cookie->id_employee)).'"><img style="margin-right:5px" src="../img/t/AdminManufacturers.gif"></a>
-                    <a href="index.php?tab=AdminManufacturers&token='.Tools::getAdminToken("AdminManufacturers".intval(Tab::getIdFromClassName('AdminManufacturers')).intval($cookie->id_employee)).'">'.translate('Manufacturers').'</a>
-                </li>';
-    		}
-    		if(isset($_GET["tab"]) && $_GET["tab"]=="AdminSuppliers"){
-    			$id_parent = -1;
-                 echo '<li id="AdminSuppliers">
-                    <a href="index.php?tab=AdminSuppliers&token='.Tools::getAdminToken("AdminSuppliers".intval(Tab::getIdFromClassName('AdminSuppliers')).intval($cookie->id_employee)).'"><img style="margin-right:5px" src="../img/t/AdminSuppliers.gif"></a>
-                    <a href="index.php?tab=AdminSuppliers&token='.Tools::getAdminToken("AdminSuppliers".intval(Tab::getIdFromClassName('AdminSuppliers')).intval($cookie->id_employee)).'">'.translate('Suppliers').'</a>
-                </li>';
-    		}
-    		if(isset($_GET["tab"]) && $_GET["tab"]=="AdminImport"){
-    			$id_parent = -1;
-    		}
-    		if(isset($_GET["tab"]) && $_GET["tab"]=="AdminImagenesAdjuntos"){
-    			$id_parent = -1;
-    		}
-    		//if(isset($_GET["tab"]) && $_GET["tab"]=="AdminMessages"){
-    		//	$id_parent = -1;
-    		//}
-            
-            
-    		if((isset($_GET["tab"]) && $_GET["tab"]=="AdminBackup") || (isset($_GET["tab"]) && $_GET["tab"]=="AdminPreferences") || 
-               (isset($_GET["tab"]) && $_GET["tab"]=="AdminRestore")){
-    			$id_parent = -1;
-                echo '
-                    <li id="AdminPreferences">
-                        <a href="index.php?tab=AdminPreferences&token='.Tools::getAdminToken("AdminPreferences".intval(Tab::getIdFromClassName('AdminPreferences')).intval($cookie->id_employee)).'">1. '.translate('Enable / Disable Shop').'</a>
-                    </li>
-                    <!--<li id="AdminImportv2">
-                        <a target="_blank" href="'.$base_remoto.'/index.php?tab=AdminImportv2&token='.Tools::getAdminToken("AdminImportv2".intval(Tab::getIdFromClassName('AdminImportv2')).intval($cookie->id_employee)).'">2. '.translate('Actualizar Catalogo').'</a>
-                    </li>-->
-                    <li id="AdminBackup">
-                        <a href="index.php?tab=AdminBackup&token='.Tools::getAdminToken("AdminBackup".intval(Tab::getIdFromClassName('AdminBackup')).intval($cookie->id_employee)).'">2. '.translate('Backup').'</a>
-                    </li>
-                    <li id="AdminRestore">
-                        <a href="index.php?tab=AdminRestore&token='.Tools::getAdminToken("AdminRestore".intval(Tab::getIdFromClassName('AdminRestore')).intval($cookie->id_employee)).'">3. '.translate('Restore').'</a>
-                    </li>
-                    <li>
-                        <a href="'.__PS_BASE_URI__.'" target="_blank">4. '.translate('See Shop').'</a>
-                    </li>';
-    		}
-            
-    		if(isset($_GET["tab"]) && $_GET["tab"]=="AdminContact"){
-    			$id_parent = -1;
-
-    		}
-    		if(isset($_GET["tab"]) && $_GET["tab"]=="AdminContacts"){
-    			$id_parent = -1;
-                echo '<li id="AdminContacts">
-                    <a href="index.php?tab=AdminContacts&token='.Tools::getAdminToken("AdminContacts".intval(Tab::getIdFromClassName('AdminContacts')).intval($cookie->id_employee)).'"><img style="margin-right:5px" src="../img/t/AdminContacts.gif"></a>
-                    <a href="index.php?tab=AdminContacts&token='.Tools::getAdminToken("AdminContacts".intval(Tab::getIdFromClassName('AdminContacts')).intval($cookie->id_employee)).'">'.translate('Email soporte').'</a>
-                </li>';
-    		}
-    		if(isset($_GET["tab"]) && $_GET["tab"]=="AdminAppearance"){
-    			$id_parent = -1;
-    		}
-    		
-    		if(isset($_GET["tab"]) && $_GET["tab"]=="AdminCMS"){
-    			$id_parent = -1;
-                echo '<li id="AdminCMS">
-                    <a href="index.php?tab=AdminCMS&token='.Tools::getAdminToken("AdminCMS".intval(Tab::getIdFromClassName('AdminCMS')).intval($cookie->id_employee)).'"><img style="margin-right:5px" src="../img/t/AdminCMS.gif"></a>
-                    <a href="index.php?tab=AdminCMS&token='.Tools::getAdminToken("AdminCMS".intval(Tab::getIdFromClassName('AdminCMS')).intval($cookie->id_employee)).'">'.translate('CMS').'</a>
-                </li>';
-    		}
-            if(isset($_GET["tab"]) && $_GET["tab"]=="adminImageAttachments"){
-    			$id_parent = -1;
-    		}
-    		
-    		//if($_GET["tab"]=="AdminCarriers"){
-    		//	$id_parent = -1;
-    		//}
-    		
-    		if(isset($_GET["tab"]) && $_GET["tab"]=="AdminCustomers"){
-    			//$id_parent = 2;
-                echo '<li id="AdminCustomers">
-                    <a href="index.php?tab=AdminCustomers&token='.Tools::getAdminToken("AdminCustomers".intval(Tab::getIdFromClassName('AdminCustomers')).intval($cookie->id_employee)).'"><img style="margin-right:5px" src="../img/t/AdminCustomers.gif"></a>
-                    <a href="index.php?tab=AdminCustomers&token='.Tools::getAdminToken("AdminCustomers".intval(Tab::getIdFromClassName('AdminCustomers')).intval($cookie->id_employee)).'">'.translate('Customers').'</a>
-                </li>';
-    		}elseif((isset($_GET["tab"]) && $_GET["tab"]=="AdminAddresses") || (isset($_GET["tab"]) && $_GET["tab"]=="AdminGroups")){
-    		   echo '<li>
-                    <a href="index.php?tab=AdminCustomers&token='.Tools::getAdminToken("AdminCustomers".intval(Tab::getIdFromClassName('AdminCustomers')).intval($cookie->id_employee)).'"><img style="margin-right:5px" src="../img/t/AdminCustomers.gif"></a>
-                    <a href="index.php?tab=AdminCustomers&token='.Tools::getAdminToken("AdminCustomers".intval(Tab::getIdFromClassName('AdminCustomers')).intval($cookie->id_employee)).'">'.translate('Customers').'</a>
-                </li>';
-    		}
-            if(isset($_GET["tab"]) && $_GET["tab"]=="adminExportDatas"){
-    			$id_parent = -1;
-                 echo '<li id="adminExportDatas">
-                    <a href="index.php?tab=adminExportDatas&token='.Tools::getAdminToken("adminExportDatas".intval(Tab::getIdFromClassName('adminExportDatas')).intval($cookie->id_employee)).'"><img style="margin-right:5px" src="../img/t/adminExportDatas.gif"></a>
-                    <a href="index.php?tab=adminExportDatas&token='.Tools::getAdminToken("adminExportDatas".intval(Tab::getIdFromClassName('adminExportDatas')).intval($cookie->id_employee)).'">'.translate('Exportacion').'</a>
-                </li>';
-    		}
-            if(isset($_GET["tab"]) && $_GET["tab"] == "AdminOrders"){
-    			$id_parent = 3;
-                echo '<li id="AdminOrders"><a href="index.php?tab=AdminOrders&token='.Tools::getAdminToken("AdminOrders".intval(Tab::getIdFromClassName('AdminOrders')).intval($cookie->id_employee)).'"><img style="margin-right:5px" src="../img/t/AdminOrders.gif"></a>
-                    <a href="index.php?tab=AdminOrders&token='.Tools::getAdminToken("AdminOrders".intval(Tab::getIdFromClassName('AdminOrders')).intval($cookie->id_employee)).'">'.translate('Orders').'</a></li>'; 
-    		}elseif((isset($_GET["tab"]) && $_GET["tab"]=="AdminInvoices") || (isset($_GET["tab"]) && $_GET["tab"]=="AdminDeliverySlip") || (isset($_GET["tab"]) && $_GET["tab"]=="AdminOrderMessage") || (isset($_GET["tab"]) && $_GET["tab"]=="AdminMessages") || (isset($_GET["tab"]) && $_GET["tab"]=="AdminLangInvoices") || (isset($_GET["tab"]) && $_GET["tab"]=="AdminCancelReservations")){
-    		   echo '<li id="AdminOrders"><a href="index.php?tab=AdminOrders&token='.Tools::getAdminToken("AdminOrders".intval(Tab::getIdFromClassName('AdminOrders')).intval($cookie->id_employee)).'"><img style="margin-right:5px" src="../img/t/AdminOrders.gif"></a>
-                    <a href="index.php?tab=AdminOrders&token='.Tools::getAdminToken("AdminOrders".intval(Tab::getIdFromClassName('AdminOrders')).intval($cookie->id_employee)).'">'.translate('Orders').'</a></li>';
-    		}
-            if(isset($_GET["tab"]) && $_GET["tab"]=="AdminPayment"){
-    			$id_parent = 4;
-                 echo '<li id="AdminPayment"><a href="index.php?tab=AdminPayment&token='.Tools::getAdminToken("AdminPayment".intval(Tab::getIdFromClassName('AdminPayment')).intval($cookie->id_employee)).'"><img style="margin-right:5px" src="../img/t/AdminPayment.gif"></a>
-                    <a href="index.php?tab=AdminPayment&token='.Tools::getAdminToken("AdminPayment".intval(Tab::getIdFromClassName('AdminPayment')).intval($cookie->id_employee)).'">'.translate('formas de Pago').'</a>
-                </li>'; 
-    		}elseif((isset($_GET["tab"]) && $_GET["tab"]=="AdminCurrencies") || (isset($_GET["tab"]) && $_GET["tab"]=="AdminTaxes")){
-                 echo '<li><a href="index.php?tab=AdminPayment&token='.Tools::getAdminToken("AdminPayment".intval(Tab::getIdFromClassName('AdminPayment')).intval($cookie->id_employee)).'"><img style="margin-right:5px" src="../img/t/AdminPayment.gif"></a>
-                    <a href="index.php?tab=AdminPayment&token='.Tools::getAdminToken("AdminPayment".intval(Tab::getIdFromClassName('AdminPayment')).intval($cookie->id_employee)).'">'.translate('formas de Pago').'</a></li>'; 
-    		}
-            /*modificando*/
-            if(isset($_GET["tab"]) && $_GET["tab"]=="AdminEmployees"){
-                $id_parent = -1;
-                 echo '<li id="AdminEmployees"><a href="index.php?tab=AdminEmployees&token='.Tools::getAdminToken("AdminEmployees".intval(Tab::getIdFromClassName('AdminEmployees')).intval($cookie->id_employee)).'"><img style="margin-right:5px" src="../img/t/AdminEmployees.gif"></a>
-                    <a href="index.php?tab=AdminEmployees&token='.Tools::getAdminToken("AdminEmployees".intval(Tab::getIdFromClassName('AdminEmployees')).intval($cookie->id_employee)).'">'.translate('Empleados').'</a>
-                </li>'; 
-            }
-            if(isset($_GET["tab"]) && $_GET["tab"]=="AdminMeta"){
-    			$id_parent = -1;
-                 echo '<li id="AdminMeta"><a href="index.php?tab=AdminMeta&token='.Tools::getAdminToken("AdminMeta".intval(Tab::getIdFromClassName('AdminMeta')).intval($cookie->id_employee)).'"><img style="margin-right:5px" src="../img/t/AdminMeta.Meta-tags"></a>
-                    <a href="index.php?tab=AdminMeta&token='.Tools::getAdminToken("AdminMeta".intval(Tab::getIdFromClassName('AdminMeta')).intval($cookie->id_employee)).'">'.translate('Meta-tags').'</a>
-                </li>'; 
-    		}
-										
-			if (isset($id_parent) AND $id_parent != -1 AND $id_parent!= 0)
-			{
-			 	$subTabs = Tab::getTabs(intval($cookie->id_lang), intval($id_parent));
-				foreach ($subTabs AS $t)
-					if (checkTabRights($t['id_tab']) === true){
-						
-                        if($t['class_name'] == "AdminCarts"){
-                        }elseif($t['class_name'] == "AdminReturn" || $t['class_name'] == "AdminSlip" || $t['class_name'] == "AdminStatuses"){
-                        }elseif($t['class_name'] == "AdminStates"  || $t['class_name'] == "AdminCountries" || $t['class_name'] == "AdminZones"){
-                        }elseif($t['class_name'] == "AdminDiscounts" ){
-                        }elseif($t['class_name'] == "AdminOrders" ){
-                            echo '
-							<li id="'.$t['class_name'].'">
-							<a href="index.php?tab='.$t['class_name'].'&token='.Tools::getAdminToken($t['class_name'].intval($t['id_tab']).intval($cookie->id_employee)).'"><img src="../img/t/'.$t['class_name'].'.gif" alt="" style="width:16px;height:16px" /></a> <a href="index.php?tab='.$t['class_name'].'&token='.Tools::getAdminToken($t['class_name'].intval($t['id_tab']).intval($cookie->id_employee)).'">'.$t['name'].'</a>
-							</li>';
-                        }else{
-                            echo '
-							<li id="'.$t['class_name'].'">
-							<a href="index.php?tab='.$t['class_name'].'&token='.Tools::getAdminToken($t['class_name'].intval($t['id_tab']).intval($cookie->id_employee)).'"><img src="../img/t/'.$t['class_name'].'.gif" alt="" style="width:16px;height:16px" /></a> <a href="index.php?tab='.$t['class_name'].'&token='.Tools::getAdminToken($t['class_name'].intval($t['id_tab']).intval($cookie->id_employee)).'">'.$t['name'].'</a>
-							</li>';
-                        }	
-						
-					}
-                    
-			}
-
-        echo '</ul>';
+        
         
         if(isset($_GET["tab"]) && $_GET["tab"]=="AdminBackup"){
             echo "<h2 class='sub_title_tab'>".translate("Backup")."</h2>";
@@ -446,7 +255,202 @@ if ($tab)
             }
             
         }
+        $adminObj->displayConf();
+        $adminObj->postProcess();
+        $adminObj->displayErrors();
+        echo '<ul class="sub_menu_shop">';
+                
+            $id_parent_tab_current = intval(Tab::getCurrentParentId());
+            // Display tabs belonging to opened tab
+            $id_parent = isset($id_parent) ? $id_parent : $id_parent_tab_current;
+            
+            if(isset($_GET["tab"]) && $_GET["tab"]=="AdminShipping"){
+                $id_parent = 5;
+                echo '<li id="AdminShipping">
+                    <a href="index.php?tab=AdminShipping&token='.Tools::getAdminToken("AdminShipping".intval(Tab::getIdFromClassName('AdminShipping')).intval($cookie->id_employee)).'"><img style="margin-right:5px" src="../img/t/AdminShipping.gif"></a>
+                    <a href="index.php?tab=AdminShipping&token='.Tools::getAdminToken("AdminShipping".intval(Tab::getIdFromClassName('AdminShipping')).intval($cookie->id_employee)).'">'.translate('Shipping').'</a>
+                </li>';
+            }elseif((isset($_GET["tab"]) && $_GET["tab"]=="AdminRangePrice") || (isset($_GET["tab"]) && $_GET["tab"]=="AdminRangeWeight") || (isset($_GET["tab"]) && $_GET["tab"]=="AdminCarriers")){
+               echo '<li>
+                    <a href="index.php?tab=AdminShipping&token='.Tools::getAdminToken("AdminShipping".intval(Tab::getIdFromClassName('AdminShipping')).intval($cookie->id_employee)).'"><img style="margin-right:5px" src="../img/t/AdminShipping.gif"></a>
+                    <a href="index.php?tab=AdminShipping&token='.Tools::getAdminToken("AdminShipping".intval(Tab::getIdFromClassName('AdminShipping')).intval($cookie->id_employee)).'">'.translate('Shipping').'</a>
+                </li>';
+            }
+            
+            if(isset($_GET["tab"]) && $_GET["tab"]=="AdminImportv2"){
+                $id_parent = -1;
+                echo '
+                    <li id="AdminImportv2">
+                        <a href="index.php?tab=AdminImportv2&token='.Tools::getAdminToken("AdminImportv2".intval(Tab::getIdFromClassName('AdminImportv2')).intval($cookie->id_employee)).'">'.translate('Imports').'</a>
+                    </li>
+                    <li id="AdminImportv2">
+                        <a href="index.php?tab=AdminImportv2&token='.Tools::getAdminToken("AdminImportv2".intval(Tab::getIdFromClassName('AdminImportv2')).intval($cookie->id_employee)).'&check=fields">'.translate('Check fields').'</a>
+                    </li>
+                    ';
+            }
+            /*modificando*/
+            if(isset($_GET["tab"]) && $_GET["tab"]=="AdminCatalog"){
+                
+               /* echo '<li id="AdminCatalog">
+                    <a href="index.php?tab=AdminCatalogs&token='.Tools::getAdminToken("AdminCatalog".intval(Tab::getIdFromClassName('AdminCatalog')).intval($cookie->id_employee)).'"><img style="margin-right:5px" src="../img/t/AdminCatalog.gif"></a>
+                    <a href="index.php?tab=AdminCatalog&token='.Tools::getAdminToken("AdminCatalog".intval(Tab::getIdFromClassName('AdminCatalog')).intval($cookie->id_employee)).'">'.translate('Catalog').'</a>
+                </li>';
+                */
+            }
+            
+            if(isset($_GET["tab"]) && $_GET["tab"]=="AdminManufacturers"){
+                $id_parent = -1;
+                 echo '<li id="AdminManufacturers">
+                    <a href="index.php?tab=AdminManufacturers&token='.Tools::getAdminToken("AdminManufacturers".intval(Tab::getIdFromClassName('AdminManufacturers')).intval($cookie->id_employee)).'"><img style="margin-right:5px" src="../img/t/AdminManufacturers.gif"></a>
+                    <a href="index.php?tab=AdminManufacturers&token='.Tools::getAdminToken("AdminManufacturers".intval(Tab::getIdFromClassName('AdminManufacturers')).intval($cookie->id_employee)).'">'.translate('Manufacturers').'</a>
+                </li>';
+            }
+            if(isset($_GET["tab"]) && $_GET["tab"]=="AdminSuppliers"){
+                $id_parent = -1;
+                 echo '<li id="AdminSuppliers">
+                    <a href="index.php?tab=AdminSuppliers&token='.Tools::getAdminToken("AdminSuppliers".intval(Tab::getIdFromClassName('AdminSuppliers')).intval($cookie->id_employee)).'"><img style="margin-right:5px" src="../img/t/AdminSuppliers.gif"></a>
+                    <a href="index.php?tab=AdminSuppliers&token='.Tools::getAdminToken("AdminSuppliers".intval(Tab::getIdFromClassName('AdminSuppliers')).intval($cookie->id_employee)).'">'.translate('Suppliers').'</a>
+                </li>';
+            }
+            if(isset($_GET["tab"]) && $_GET["tab"]=="AdminImport"){
+                $id_parent = -1;
+            }
+            if(isset($_GET["tab"]) && $_GET["tab"]=="AdminImagenesAdjuntos"){
+                $id_parent = -1;
+            }
+            //if(isset($_GET["tab"]) && $_GET["tab"]=="AdminMessages"){
+            //  $id_parent = -1;
+            //}
+            
+            
+            if((isset($_GET["tab"]) && $_GET["tab"]=="AdminBackup") || (isset($_GET["tab"]) && $_GET["tab"]=="AdminPreferences") || 
+               (isset($_GET["tab"]) && $_GET["tab"]=="AdminRestore")){
+                $id_parent = -1;
+                echo '
+                    <li id="AdminPreferences">
+                        <a href="index.php?tab=AdminPreferences&token='.Tools::getAdminToken("AdminPreferences".intval(Tab::getIdFromClassName('AdminPreferences')).intval($cookie->id_employee)).'">1. '.translate('Enable / Disable Shop').'</a>
+                    </li>
+                    <!--<li id="AdminImportv2">
+                        <a target="_blank" href="'.$base_remoto.'/index.php?tab=AdminImportv2&token='.Tools::getAdminToken("AdminImportv2".intval(Tab::getIdFromClassName('AdminImportv2')).intval($cookie->id_employee)).'">2. '.translate('Actualizar Catalogo').'</a>
+                    </li>-->
+                    <li id="AdminBackup">
+                        <a href="index.php?tab=AdminBackup&token='.Tools::getAdminToken("AdminBackup".intval(Tab::getIdFromClassName('AdminBackup')).intval($cookie->id_employee)).'">2. '.translate('Backup').'</a>
+                    </li>
+                    <li id="AdminRestore">
+                        <a href="index.php?tab=AdminRestore&token='.Tools::getAdminToken("AdminRestore".intval(Tab::getIdFromClassName('AdminRestore')).intval($cookie->id_employee)).'">3. '.translate('Restore').'</a>
+                    </li>
+                    <li>
+                        <a href="'.__PS_BASE_URI__.'" target="_blank">4. '.translate('See Shop').'</a>
+                    </li>';
+            }
+            
+            if(isset($_GET["tab"]) && $_GET["tab"]=="AdminContact"){
+                $id_parent = -1;
 
+            }
+            if(isset($_GET["tab"]) && $_GET["tab"]=="AdminContacts"){
+                $id_parent = -1;
+                echo '<li id="AdminContacts">
+                    <a href="index.php?tab=AdminContacts&token='.Tools::getAdminToken("AdminContacts".intval(Tab::getIdFromClassName('AdminContacts')).intval($cookie->id_employee)).'"><img style="margin-right:5px" src="../img/t/AdminContacts.gif"></a>
+                    <a href="index.php?tab=AdminContacts&token='.Tools::getAdminToken("AdminContacts".intval(Tab::getIdFromClassName('AdminContacts')).intval($cookie->id_employee)).'">'.translate('Email soporte').'</a>
+                </li>';
+            }
+            if(isset($_GET["tab"]) && $_GET["tab"]=="AdminAppearance"){
+                $id_parent = -1;
+            }
+            
+            if(isset($_GET["tab"]) && $_GET["tab"]=="AdminCMS"){
+                $id_parent = -1;
+                echo '<li id="AdminCMS">
+                    <a href="index.php?tab=AdminCMS&token='.Tools::getAdminToken("AdminCMS".intval(Tab::getIdFromClassName('AdminCMS')).intval($cookie->id_employee)).'"><img style="margin-right:5px" src="../img/t/AdminCMS.gif"></a>
+                    <a href="index.php?tab=AdminCMS&token='.Tools::getAdminToken("AdminCMS".intval(Tab::getIdFromClassName('AdminCMS')).intval($cookie->id_employee)).'">'.translate('CMS').'</a>
+                </li>';
+            }
+            if(isset($_GET["tab"]) && $_GET["tab"]=="adminImageAttachments"){
+                $id_parent = -1;
+            }
+            
+            //if($_GET["tab"]=="AdminCarriers"){
+            //  $id_parent = -1;
+            //}
+            
+            if(isset($_GET["tab"]) && $_GET["tab"]=="AdminCustomers"){
+                //$id_parent = 2;
+                echo '<li id="AdminCustomers">
+                    <a href="index.php?tab=AdminCustomers&token='.Tools::getAdminToken("AdminCustomers".intval(Tab::getIdFromClassName('AdminCustomers')).intval($cookie->id_employee)).'"><img style="margin-right:5px" src="../img/t/AdminCustomers.gif"></a>
+                    <a href="index.php?tab=AdminCustomers&token='.Tools::getAdminToken("AdminCustomers".intval(Tab::getIdFromClassName('AdminCustomers')).intval($cookie->id_employee)).'">'.translate('Customers').'</a>
+                </li>';
+            }elseif((isset($_GET["tab"]) && $_GET["tab"]=="AdminAddresses") || (isset($_GET["tab"]) && $_GET["tab"]=="AdminGroups")){
+               echo '<li>
+                    <a href="index.php?tab=AdminCustomers&token='.Tools::getAdminToken("AdminCustomers".intval(Tab::getIdFromClassName('AdminCustomers')).intval($cookie->id_employee)).'"><img style="margin-right:5px" src="../img/t/AdminCustomers.gif"></a>
+                    <a href="index.php?tab=AdminCustomers&token='.Tools::getAdminToken("AdminCustomers".intval(Tab::getIdFromClassName('AdminCustomers')).intval($cookie->id_employee)).'">'.translate('Customers').'</a>
+                </li>';
+            }
+            if(isset($_GET["tab"]) && $_GET["tab"]=="adminExportDatas"){
+                $id_parent = -1;
+                 echo '<li id="adminExportDatas">
+                    <a href="index.php?tab=adminExportDatas&token='.Tools::getAdminToken("adminExportDatas".intval(Tab::getIdFromClassName('adminExportDatas')).intval($cookie->id_employee)).'"><img style="margin-right:5px" src="../img/t/adminExportDatas.gif"></a>
+                    <a href="index.php?tab=adminExportDatas&token='.Tools::getAdminToken("adminExportDatas".intval(Tab::getIdFromClassName('adminExportDatas')).intval($cookie->id_employee)).'">'.translate('Exportacion').'</a>
+                </li>';
+            }
+            if(isset($_GET["tab"]) && $_GET["tab"] == "AdminOrders"){
+                $id_parent = 3;
+                echo '<li id="AdminOrders"><a href="index.php?tab=AdminOrders&token='.Tools::getAdminToken("AdminOrders".intval(Tab::getIdFromClassName('AdminOrders')).intval($cookie->id_employee)).'"><img style="margin-right:5px" src="../img/t/AdminOrders.gif"></a>
+                    <a href="index.php?tab=AdminOrders&token='.Tools::getAdminToken("AdminOrders".intval(Tab::getIdFromClassName('AdminOrders')).intval($cookie->id_employee)).'">'.translate('Orders').'</a></li>'; 
+            }elseif((isset($_GET["tab"]) && $_GET["tab"]=="AdminInvoices") || (isset($_GET["tab"]) && $_GET["tab"]=="AdminDeliverySlip") || (isset($_GET["tab"]) && $_GET["tab"]=="AdminOrderMessage") || (isset($_GET["tab"]) && $_GET["tab"]=="AdminMessages") || (isset($_GET["tab"]) && $_GET["tab"]=="AdminLangInvoices") || (isset($_GET["tab"]) && $_GET["tab"]=="AdminCancelReservations")){
+               echo '<li id="AdminOrders"><a href="index.php?tab=AdminOrders&token='.Tools::getAdminToken("AdminOrders".intval(Tab::getIdFromClassName('AdminOrders')).intval($cookie->id_employee)).'"><img style="margin-right:5px" src="../img/t/AdminOrders.gif"></a>
+                    <a href="index.php?tab=AdminOrders&token='.Tools::getAdminToken("AdminOrders".intval(Tab::getIdFromClassName('AdminOrders')).intval($cookie->id_employee)).'">'.translate('Orders').'</a></li>';
+            }
+            if(isset($_GET["tab"]) && $_GET["tab"]=="AdminPayment"){
+                $id_parent = 4;
+                 echo '<li id="AdminPayment"><a href="index.php?tab=AdminPayment&token='.Tools::getAdminToken("AdminPayment".intval(Tab::getIdFromClassName('AdminPayment')).intval($cookie->id_employee)).'"><img style="margin-right:5px" src="../img/t/AdminPayment.gif"></a>
+                    <a href="index.php?tab=AdminPayment&token='.Tools::getAdminToken("AdminPayment".intval(Tab::getIdFromClassName('AdminPayment')).intval($cookie->id_employee)).'">'.translate('formas de Pago').'</a>
+                </li>'; 
+            }elseif((isset($_GET["tab"]) && $_GET["tab"]=="AdminCurrencies") || (isset($_GET["tab"]) && $_GET["tab"]=="AdminTaxes")){
+                 echo '<li><a href="index.php?tab=AdminPayment&token='.Tools::getAdminToken("AdminPayment".intval(Tab::getIdFromClassName('AdminPayment')).intval($cookie->id_employee)).'"><img style="margin-right:5px" src="../img/t/AdminPayment.gif"></a>
+                    <a href="index.php?tab=AdminPayment&token='.Tools::getAdminToken("AdminPayment".intval(Tab::getIdFromClassName('AdminPayment')).intval($cookie->id_employee)).'">'.translate('formas de Pago').'</a></li>'; 
+            }
+            /*modificando*/
+            if(isset($_GET["tab"]) && $_GET["tab"]=="AdminEmployees"){
+                $id_parent = -1;
+                 echo '<li id="AdminEmployees"><a href="index.php?tab=AdminEmployees&token='.Tools::getAdminToken("AdminEmployees".intval(Tab::getIdFromClassName('AdminEmployees')).intval($cookie->id_employee)).'"><img style="margin-right:5px" src="../img/t/AdminEmployees.gif"></a>
+                    <a href="index.php?tab=AdminEmployees&token='.Tools::getAdminToken("AdminEmployees".intval(Tab::getIdFromClassName('AdminEmployees')).intval($cookie->id_employee)).'">'.translate('Empleados').'</a>
+                </li>'; 
+            }
+            if(isset($_GET["tab"]) && $_GET["tab"]=="AdminMeta"){
+                $id_parent = -1;
+                 echo '<li id="AdminMeta"><a href="index.php?tab=AdminMeta&token='.Tools::getAdminToken("AdminMeta".intval(Tab::getIdFromClassName('AdminMeta')).intval($cookie->id_employee)).'"><img style="margin-right:5px" src="../img/t/AdminMeta.Meta-tags"></a>
+                    <a href="index.php?tab=AdminMeta&token='.Tools::getAdminToken("AdminMeta".intval(Tab::getIdFromClassName('AdminMeta')).intval($cookie->id_employee)).'">'.translate('Meta-tags').'</a>
+                </li>'; 
+            }
+                                        
+            if (isset($id_parent) AND $id_parent != -1 AND $id_parent!= 0)
+            {
+                $subTabs = Tab::getTabs(intval($cookie->id_lang), intval($id_parent));
+                foreach ($subTabs AS $t)
+                    if (checkTabRights($t['id_tab']) === true){
+                        
+                        if($t['class_name'] == "AdminCarts"){
+                        }elseif($t['class_name'] == "AdminReturn" || $t['class_name'] == "AdminSlip" || $t['class_name'] == "AdminStatuses"){
+                        }elseif($t['class_name'] == "AdminStates"  || $t['class_name'] == "AdminCountries" || $t['class_name'] == "AdminZones"){
+                        }elseif($t['class_name'] == "AdminDiscounts" ){
+                        }elseif($t['class_name'] == "AdminOrders" ){
+                            echo '
+                            <li id="'.$t['class_name'].'">
+                            <a href="index.php?tab='.$t['class_name'].'&token='.Tools::getAdminToken($t['class_name'].intval($t['id_tab']).intval($cookie->id_employee)).'"><img src="../img/t/'.$t['class_name'].'.gif" alt="" style="width:16px;height:16px" /></a> <a href="index.php?tab='.$t['class_name'].'&token='.Tools::getAdminToken($t['class_name'].intval($t['id_tab']).intval($cookie->id_employee)).'">'.$t['name'].'</a>
+                            </li>';
+                        }else{
+                            echo '
+                            <li id="'.$t['class_name'].'">
+                            <a href="index.php?tab='.$t['class_name'].'&token='.Tools::getAdminToken($t['class_name'].intval($t['id_tab']).intval($cookie->id_employee)).'"><img src="../img/t/'.$t['class_name'].'.gif" alt="" style="width:16px;height:16px" /></a> <a href="index.php?tab='.$t['class_name'].'&token='.Tools::getAdminToken($t['class_name'].intval($t['id_tab']).intval($cookie->id_employee)).'">'.$t['name'].'</a>
+                            </li>';
+                        }   
+                        
+                    }
+                    
+            }
+
+        echo '</ul>';
 		if (Validate::isLoadedObject($adminObj))
 			if (!$adminObj->checkToken())
 				return;
@@ -474,9 +478,9 @@ if ($tab)
 				elseif (strncmp($key, $adminObj->table.'OrderBy', 7) === 0 OR strncmp($key, $adminObj->table.'Orderway', 12) === 0)
 					$cookie->$key = $value;
 
-		$adminObj->displayConf();
-		$adminObj->postProcess();
-		$adminObj->displayErrors();
+		/*$adminObj->displayConf();*/
+		/*$adminObj->postProcess();
+		$adminObj->displayErrors();*/
 		$adminObj->display();
 	}
 }

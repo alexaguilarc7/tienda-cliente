@@ -347,7 +347,7 @@ require_once(dirname(__FILE__).'/init.php');
 			</ul>
 			-->
 			<div id="main">
-				<ul id="submenu">
+				<ul id="submenu" style="display: none">
 				<?php
 					global $cookie;
 					$id_parent_tab_current = intval(Tab::getCurrentParentId());

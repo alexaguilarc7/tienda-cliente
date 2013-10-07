@@ -5,7 +5,7 @@ require_once(dirname(__FILE__).'/init.php');
 $errors = array();
 
 $orderTotal = $cart->getOrderTotal(true, 1);
-
+//$quantity_add_delete = Tools::getIsset('quantity_add') ? "quantity_add" : "quantity_delete";
 $cartDiscounts = $cart->getDiscounts();
 foreach ($cartDiscounts AS $k => $cartDiscount)
 	if ($error = $cart->checkDiscountValidity(new Discount(intval($cartDiscount['id_discount'])), $cartDiscounts, $orderTotal, $cart->getProducts()))
@@ -26,7 +26,7 @@ if ($add OR Tools::getIsset('update') OR $delete)
  	$idProduct = intval(Tools::getValue('id_product', NULL));
 	$idProductAttribute = intval(Tools::getValue('id_product_attribute', Tools::getValue('ipa')));
 	$customizationId = intval(Tools::getValue('id_customization', 0));
-	$qty = intval(abs(Tools::getValue('qty', 1)));
+	$qty = intval(abs(Tools::getValue('quantity_1', 1)));
 
 	if ($qty == 0)
 		$errors[] = Tools::displayError('null quantity');

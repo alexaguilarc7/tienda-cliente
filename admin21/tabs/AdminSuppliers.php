@@ -35,7 +35,7 @@ class AdminSuppliers extends AdminTab
 			'id_supplier' => array('title' => $this->l('ID'), 'align' => 'center', 'width' => 25),
 			'name' => array('title' => $this->l('Name'), 'width' => 120),
 			'description' => array('title' => $this->l('Descripción'), 'align' => 'center', 'width' => 200),			
-			'products' => array('title' => $this->l('Num. productos'), 'align' => 'right','width' => 30, 'filter_type' => 'int', 'tmpTableFilter' => true)
+			//'products' => array('title' => $this->l('Num. productos'), 'align' => 'right','width' => 30, 'filter_type' => 'int', 'tmpTableFilter' => true)
 		);
 	
 		parent::__construct();

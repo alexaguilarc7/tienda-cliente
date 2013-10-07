@@ -75,6 +75,7 @@ class AdminMessages extends AdminTab
  		$this->fieldsDisplay = array(
 		'id_order' => array('title' => $this->l('Order ID'), 'align' => 'center', 'width' => 30),
 		'id_customer' => array('title' => $this->l('Customer ID'), 'align' => 'center', 'width' => 30),
+		'new' => array('title' => $this->l('Pedido'), 'width' => 25, 'align' => 'center', 'type' => 'bool', 'filter_key' => 'new', 'tmpTableFilter' => true, 'icon' => array(0 => 'blank.gif', 1 => 'news-new.gif'), 'orderby' => false),
 		'customer' => array('title' => $this->l('Customer'), 'width' => 100, 'filter_key' => 'customer', 'tmpTableFilter' => true),
 		'last_message' => array('title' => $this->l('Last message'), 'width' => 400, 'orderby' => false),
 		'nb_messages_not_read_by_me' => array('title' => $this->l('Unread message(s)'), 'width' =>30, 'align' => 'center'),

@@ -1742,7 +1742,8 @@ class AdminProducts extends AdminTab
                                         </div>
                                     </div>
                                     
-                                    <div '.($stockcontrol == 1 ? ' class="col_quantity"' : 'class="col_quantity hide_tag"').' style="border-right:1px solid #DDDDDD;margin:0 40px 0 0;padding: 0 25px 0 0;width:230px;">
+                                    <!--div '.($stockcontrol == 1 ? ' class="col_quantity"' : 'class="col_quantity hide_tag"').' style="border-right:1px solid #DDDDDD;margin:0 40px 0 0;padding: 0 25px 0 0;width:230px;"-->
+                                    <div '.($stockcontrol == 1 ? ' class="col_quantity"' : 'class="col_quantity hide_tag"').' style="border-right:1px solid #DDDDDD;margin:0 5px 0 0;padding: 0 0px 0 0;width:230px;">
                                         <h3>'.$this->l("Regularizar").'</h3>
                                         <div class="row">
                                             <label class="stock_name_2">'.$this->l('Positivo').':</label>
@@ -1757,7 +1758,7 @@ class AdminProducts extends AdminTab
                                         <p>'.$this->l('Suma o resta el stock').'</p>
                                     </div>
                                     
-                                    <div '.($stockcontrol == 1 ? 'class="col_quantity"' : 'class="col_quantity hide_tag"').'>
+                                    <div '.($stockcontrol == 1 ? 'class="col_quantity"' : 'class="col_quantity hide_tag"').' style="border-right:1px solid #DDDDDD; margin-right: 10px;">
                                         <h3>'.$this->l("Restablecer").'</h3>
                                         <div class="row">
                                             <label class="stock_name_2">'.$this->l('Positivo:').'</label>
@@ -1770,6 +1771,19 @@ class AdminProducts extends AdminTab
                                             <button type="button" class="button" type_field="update_stock_missing">'.$this->l('Restablecer').'</button>
                                         </div>
                                         <p>'.$this->l('Establece la cantidad indicada').'</p>
+                                    </div>
+                                    <div class="col_quantity stockname" '.($stockcontrol == 1 ? '' : 'style="border: none;"').' style="border-right:none">
+                                        <h3>'.$this->l("Alert out of Stock").'</h3>
+                                        <div class="row">
+                                            <label class="stock_name">'.$this->l('Quantity:').'</label>
+                                            <!--input size="3" maxlength="6" '.$qty_state.' name="quantity" id="quantity" type="text" value="'.$qty.'" disabled="disabled"/-->
+                                            <input type="text" name="MAP_LAST_QTIES" value="'.(Tools::getValue('MAP_LAST_QTIES') != NULL ? intval(Tools::getValue('MAP_LAST_QTIES')) : Configuration::get('MAP_LAST_QTIES')).'" size="3" />
+                                        </div>
+                                        <div class="row">
+                                            <!input type="text" name="MAP_LAST_QTIES" value="'.(Tools::getValue('MAP_LAST_QTIES') != NULL ? intval(Tools::getValue('MAP_LAST_QTIES')) : Configuration::get('MAP_LAST_QTIES')).'" size="3" /-->
+											<!--p>'.$this->l('Quantity for which a product is regarded as out of stock').'</p-->
+											<button type="button" class="button" type_field="update_stock">'.$this->l('Restablecer').'</button>
+                                        </div>
                                     </div>
                                 </div>
                             </td>
@@ -3307,7 +3321,7 @@ class AdminProducts extends AdminTab
 					echo '" />
 							<input type="hidden" name="nameAccessories" id="nameAccessories" value="';
 					foreach ($accessories as $accessory)
-						echo $accessory['name'].'¤';
+						echo $accessory['name'].'?';
 
 					echo '" />
 							<script type="text/javascript">
@@ -3403,7 +3417,7 @@ class AdminProducts extends AdminTab
                         <label style="width: 120px;text-align: left;">'.$this->l('Control Stock:').'</label>
                         <div class="margin-form" style="float:left; margin-left:5px; padding:3px 0 0 0;">
                             <label for="PS_CONTROL_STOCK_on" class="t">
-                                <img title="Sí" alt="Sí" src="../img/admin/enabled.gif">
+                                <img title="S? alt="S? src="../img/admin/enabled.gif">
                             </label>
                             <input type="radio" "'.($enable_stock ? ' checked="checked"' : '').'" value="1" id="PS_CONTROL_STOCK_on" name="PS_CONTROL_STOCK">
                             <label class="t" for="PS_CONTROL_STOCK_off"> '.$this->l('Yes').'</label>

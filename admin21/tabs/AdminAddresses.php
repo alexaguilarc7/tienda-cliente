@@ -41,12 +41,13 @@ class AdminAddresses extends AdminTab
 
 		$this->fieldsDisplay = array(
 		'id_address' => array('title' => $this->l('ID'), 'align' => 'center', 'width' => 25),
+		'id_customer' => array('title' => $this->l('ID Cliente'), 'align' => 'center', 'width' => 30),
 		'alias' => array('title' => $this->l('Alias'), 'align' => 'left', 'width' => 25),
 		'company' => array('title' => $this->l('Empresa'), 'align' => 'left', 'width' => 25),
 		'firstname' => array('title' => $this->l('First name'), 'width' => 80, 'filter_key' => 'a!firstname'),
 		'lastname' => array('title' => $this->l('Last name'), 'width' => 100, 'filter_key' => 'a!lastname'),		
 		//'address1' => array('title' => $this->l('Address'), 'width' => 200),		
-		'email' => array('title' => $this->l('Email'), 'width' => 90, 'maxlength' => 19),
+		//'email' => array('title' => $this->l('Email'), 'width' => 90, 'maxlength' => 19),
 		'city' => array('title' => $this->l('City'), 'width' => 120),
 		'phone' => array('title' => $this->l('Telefono'), 'align' => 'right', 'width' => 50),		
 		'phone_mobile' => array('title' => $this->l('Movil'), 'align' => 'right', 'width' => 50),

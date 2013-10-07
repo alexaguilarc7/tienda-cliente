@@ -147,6 +147,8 @@ class		Product extends ObjectModel
 	/*** @var array Tags */
 	public		$tags;
 
+	//public 		$qty_alert_stock; // añadido extra
+
 	public	static $_taxCalculationMethod = PS_TAX_EXC;
 	private static $_prices = array();
 
