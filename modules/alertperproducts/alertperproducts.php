@@ -56,7 +56,7 @@ class AlertPerProducts extends Module
 		)
 	 		return false;
 		if (!Db::getInstance()->Execute('
-			ALTER TABLE`'._DB_PREFIX_.'product` ADD COLUMN `qty_alert_mail` int(10) unsigned NOT NULL')
+			ALTER TABLE`'._DB_PREFIX_.'product` ADD COLUMN `qty_alert_mail` int(10) unsigned NOT NULL DEFAULT 2')
 		)
 	 		return false;
 
@@ -169,11 +169,7 @@ class AlertPerProducts extends Module
 		<br />
 		<form action="'.$currentIndex.'&token='.$token.'&configure=mailalerts" method="post">
 			<fieldset class="width3"><!--<legend><img src="'.$this->_path.'logo.gif" />'.$this->l('Merchant notification').'</legend>-->
-				<label>'.$this->l('New order:').' </label>
-				<div class="margin-form">
-					<input type="checkbox" value="1" id="MAP_merchand_order" name="MAP_merchand_order" '.(Tools::getValue('MAP_merchand_order', $this->_merchant_order) == 1 ? 'checked' : '').'>
-					&nbsp;<label for="MAP_merchand_order" class="t">'.$this->l('Receive a notification if a new order is made').'</label>
-				</div>
+				 	
 				<label>'.$this->l('Out of stock:').' </label>
 				<div class="margin-form">
 					<input type="checkbox" value="1" id="MAP_merchand_oos" name="MAP_merchand_oos" '.(Tools::getValue('MAP_merchand_oos', $this->_merchant_oos) == 1 ? 'checked' : '').'>
@@ -311,15 +307,7 @@ class AlertPerProducts extends Module
 		return ($products);
 	}
 
-	static public function deleteAlert($id_customer, $customer_email, $id_product, $id_product_attribute)
-	{
-		return Db::getInstance()->Execute('
-			DELETE FROM `'._DB_PREFIX_.'mailalert_customer_oos2` 
-			WHERE `id_customer` = '.intval($id_customer).'
-			AND `customer_email` = \''.pSQL($customer_email).'\'
-			AND `id_product` = '.intval($id_product).'
-			AND `id_product_attribute` = '.intval($id_product_attribute));
-	}
+ 
 }
 
 ?>

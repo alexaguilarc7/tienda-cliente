@@ -1726,6 +1726,13 @@ class AdminProducts extends AdminTab
                         <td colspan="2"><hr style="width:100%;" /></td>
                     </tr>';
                 $stockcontrol = Configuration::get("PS_CONTROL_STOCK");
+                $alert_stock_mail = Db::getInstance()->getRow('
+						SELECT `qty_alert_mail` FROM `'._DB_PREFIX_.'product`
+						WHERE `id_product` = '.$obj->id);
+						/*Db::getInstance()->Execute('
+						UPDATE `'._DB_PREFIX_.'image`
+						SET `cover` = 1
+						WHERE `id_image` = '.intval($first_img['id_image']));*/
                 if($obj->id != null){
                     echo '<tr>
                             <td colspan="2">
@@ -1777,7 +1784,7 @@ class AdminProducts extends AdminTab
                                         <div class="row">
                                             <label class="stock_name">'.$this->l('Quantity:').'</label>
                                             <!--input size="3" maxlength="6" '.$qty_state.' name="quantity" id="quantity" type="text" value="'.$qty.'" disabled="disabled"/-->
-                                            <input type="text" name="MAP_LAST_QTIES" value="'.(Tools::getValue('MAP_LAST_QTIES') != NULL ? intval(Tools::getValue('MAP_LAST_QTIES')) : Configuration::get('MAP_LAST_QTIES')).'" size="3" />
+                                            <input type="text" name="MAP_LAST_QTIES" value="'.$alert_stock_mail['qty_alert_mail'].'" size="3" />
                                         </div>
                                         <div class="row">
                                             <!input type="text" name="MAP_LAST_QTIES" value="'.(Tools::getValue('MAP_LAST_QTIES') != NULL ? intval(Tools::getValue('MAP_LAST_QTIES')) : Configuration::get('MAP_LAST_QTIES')).'" size="3" /-->
